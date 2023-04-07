@@ -1,14 +1,6 @@
 version: 0.0
 os: linux
 files:
-  - source: /
+  - source: .
     destination: /var/www/html
-hooks:
-  BeforeInstall:
-    - location: ./install_dependencies.sh
-      timeout: 300
-      runas: root
-  AfterInstall:
-    - location: ./setup_apache.sh
-      timeout: 300
-      runas: root
+
