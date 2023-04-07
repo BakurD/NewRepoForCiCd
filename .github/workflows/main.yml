@@ -15,7 +15,7 @@ jobs:
       - name: Git clone our repo
         uses: actions/checkout@v1
       - name: Archive repository
-        run: tar -czf repo.tar.gz .
+        run: tar -czf repo.tar.gz . --ignore-failed-read
       - name: AWS autentification
         uses: aws-actions/configure-aws-credentials@v1
         with: 
