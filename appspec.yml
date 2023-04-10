@@ -1,8 +1,14 @@
 version: 0.0
 os: linux
 files:
-  - source: index.html
-    destination: /var/www/html
-    permissions: '0755'
-    owner: ubuntu
-
+  - source: /index.html
+    destination: /var/www/html/
+hooks:
+  BeforeInstall:
+    - location: scripts/check_apache2.sh
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: scripts/update_index.sh
+      timeout: 300
+      runas: root
