@@ -3,4 +3,6 @@ os: linux
 files:
   - source: index.html
     destination: /var/www/html
+    permissions: '0755'
+    owner: ubuntu
 
