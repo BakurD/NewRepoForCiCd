@@ -15,9 +15,8 @@ jobs:
       - name: Git clone our repo
         uses: actions/checkout@v1
       - name: Archive repository
-        run: zip -r repo.zip ./index.html
-      - name: Archive Appsepc
-        run: zip -r repo.zip ./appspec.yml
+        run: |
+          zip -r repo.zip ./index.html ./appspec.yaml
       - name: AWS autentification
         uses: aws-actions/configure-aws-credentials@v1
         with: 
@@ -25,4 +24,4 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
       - name: Copy file to s3
-        run: aws s3 cp repo.zip s3://${{ env.S3_BUCKET_NAME }} --recursive:
+        run: aws s3 cp repo.zip s3://${{ env.S3_BUCKET_NAME }}/
