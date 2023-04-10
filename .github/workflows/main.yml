@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v1
       - name: Archive repository
         run: |
-          zip -r repo.zip ./index.html ./appspec.yaml
+          zip -r repo.zip ./ -x "*.git*"
       - name: AWS autentification
         uses: aws-actions/configure-aws-credentials@v1
         with: 
